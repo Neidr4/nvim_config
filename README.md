@@ -3,6 +3,8 @@
 
 Download Neovim .deb from a stable release:
 https://github.com/neovim/neovim/releases/tag/v0.8.0
+Or through the direct link:
+https://github.com/neovim/neovim/releases/download/v0.8.0/nvim-linux64.deb
 
 Install neovim
 ```bash
