@@ -1,14 +1,27 @@
 # nvim_config
 ## Personal nvim config
 
-Download Neovim .deb from a stable release:
-https://github.com/neovim/neovim/releases/tag/v0.8.0
-Or through the direct link:
-https://github.com/neovim/neovim/releases/download/v0.8.0/nvim-linux64.deb
+### Installing for already built
+Download Neovim .deb from a [stable release](https://github.com/neovim/neovim/releases/tag/v0.8.3):
 
 Install neovim
 ```bash
 sudo apt install ./neovim
+```
+
+### Installing from source
+Get the latest stable version:
+
+```bash
+git clone --depth 1 --branch stable https://github.com/neovim/neovim.git
+cd neovim
+sudo make CMAKE_BUILD_TYPE=Release install
+```
+
+### Installing pluggings
+Setup other stuff:
+```bash
+sudo apt install fzf ripgrep ps
 ```
 
 Install Packer:
@@ -16,3 +29,11 @@ Install Packer:
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 ```
+
+Install packages from Packer:
+```bash
+nvim $HOME/.config/nvim/lua/neidr4/packer.lua
+:source
+:PackerSync
+```
+Then you can restart and enjoy nvim ;)
