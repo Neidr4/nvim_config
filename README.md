@@ -21,7 +21,7 @@ sudo make CMAKE_BUILD_TYPE=Release install
 ### Installing pluggings
 Setup other stuff:
 ```bash
-sudo apt install fzf ripgrep ps
+sudo apt install fzf ripgrep ps xclip
 ```
 
 Install Packer:
