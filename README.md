@@ -18,7 +18,14 @@ cd neovim
 sudo make CMAKE_BUILD_TYPE=Release install
 ```
 
-### Installing pluggings
+### Installing plug-ins
+```bash
+git clone https://github.com/neidr4/nvim_config.nvim\
+ ~/.config/
+```
+Rename it to 'nvim'?
+
+### Installing plug-ins
 Setup other stuff:
 ```bash
 sudo apt install fzf ripgrep ps xclip
