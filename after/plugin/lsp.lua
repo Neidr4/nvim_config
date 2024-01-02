@@ -2,15 +2,6 @@ local lsp = require('lsp-zero')
 
 lsp.preset('recommended')
 
--- lsp.ensure_installed({
---     -- 'tsserver',
---     -- 'eslint',
---     -- 'sumneko_lua',
---     'lua_ls',
---     'rust_analyzer',
---     'pylsp',
--- })
-
 require('mason').setup({})
 require('mason-lspconfig').setup({
   -- Replace the language servers listed here 
@@ -21,25 +12,32 @@ require('mason-lspconfig').setup({
   },
 })
 
+require("lspconfig").pylsp.setup({
+    settings = {
+        pylsp = {
+            plugins = {
+                pycodestyle = {
+                    maxLineLength = 100
+                }
+            }
+        }
+    }
+})
+
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
 local cmp_select = {behavious = cmp.SelectBehavior.Select}
-local cmp_mappings = lsp.defaults.cmp_mappings({
-    ['<C-p'] = cmp.mapping.select_prev_item(cmp_select),
-    ['<C-n'] = cmp.mapping.select_next_item(cmp_select),
-    -- ['<C-y'] = cmp.mapping.confirm({ select = true }),
-    -- ['<Space>'] = cmp.mapping.confirm({ select = true }),
-    ['<Enter>'] = cmp.mapping.confirm({ select = true }),
-    ['<C-Space'] = cmp.mapping.complete(),
-})
 
 lsp.set_preferences({
 	sign_icons = { }
 })
 
--- lsp.setup_nvim_cmp({
---     mapping = cmp_mappings
--- })
+lsp.on_attach(function(client, bufnr)
+    lsp.default_kemaps({
+        buffer = bufnr,
+        preserve_mappings = false
+    })
+end)
 
 cmp.setup({
   window = {
@@ -74,6 +72,9 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
     vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
     vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+    vim.keymap.set("n", "<F2>", function() vim.lsp.buf.rename() end, opts)
+    vim.keymap.set("n", "<F3>", function() vim.lsp.buf.format() end, opts)
+    vim.keymap.set("n", "<F4>", function() vim.lsp.buf.code_action() end, opts)
 end)
 
 lsp.setup()
