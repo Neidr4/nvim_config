@@ -14,14 +14,14 @@ sudo make CMAKE_BUILD_TYPE=Release install;
 
 ### Installing plug-ins
 ```bash
-git clone https://github.com/neidr4/nvim_config.nvim\ ~/.config/;
+git clone git@github.com:Neidr4/nvim_config.git ~/.config/;
 cd ~/.config; mv nvim_config nvim;
 ```
 
 ### Installing plug-ins
 Setup other stuff:
 ```bash
-sudo apt install fzf ripgrep ps xclip
+sudo apt install fzf ripgrep xclip
 ```
 
 Install Packer:
