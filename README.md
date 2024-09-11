@@ -6,6 +6,7 @@
 Get the latest stable version:
 
 ```bash
+sudo apt-get install ninja-build gettext cmake unzip curl build-essential;
 git clone --depth 1 --branch stable https://github.com/neovim/neovim.git;
 cd neovim;
 sudo make CMAKE_BUILD_TYPE=Release install;
